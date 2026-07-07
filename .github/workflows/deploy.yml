@@ -15,7 +15,7 @@ jobs:
           username: ${{ secrets.DROPLET_USER }}
           key: ${{ secrets.DROPLET_SSH_KEY }}
           script: |
-            cd /opt/self-hosted-ai-starter-kit/repo_for_ai_starter_deployment
+            cd /opt/praxis-july-7-digital-ocean-deployment
             git reset --hard origin/main
             git pull origin main
             docker compose up -d --build
