@@ -15,8 +15,20 @@ jobs:
           username: ${{ secrets.DROPLET_USER }}
           key: ${{ secrets.DROPLET_SSH_KEY }}
           script: |
+            # Navigate to the project directory
             cd /opt/praxis-july-7-digital-ocean-deployment
+            
+            # Fetch and reset to ensure the local repo matches the GitHub main branch
+            git fetch --all
             git reset --hard origin/main
-            git pull origin main
+            
+            # Stop and remove existing containers, networks, and images created by compose
+            # This ensures a clean slate for the new build
+            docker compose down
+            
+            # Rebuild images and start the services in detached mode
+            # --build forces Docker to re-run the Dockerfile steps with your new code
             docker compose up -d --build
+            
+            # Cleanup dangling images to free up space on your Droplet
             docker image prune -f
