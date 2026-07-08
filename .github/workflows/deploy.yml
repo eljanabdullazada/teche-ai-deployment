@@ -16,7 +16,7 @@ jobs:
           key: ${{ secrets.DROPLET_SSH_KEY }}
           script: |
             # Navigate to the project directory
-            cd /opt/praxis-july-7-digital-ocean-deployment
+            cd /opt/teche-ai-deployment
             
             # Fetch and reset to ensure the local repo matches the GitHub main branch
             git fetch --all
