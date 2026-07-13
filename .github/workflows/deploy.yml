@@ -14,10 +14,11 @@ jobs:
           host: ${{ secrets.DROPLET_HOST }}
           username: ${{ secrets.DROPLET_USER }}
           key: ${{ secrets.DROPLET_SSH_KEY }}
+          passphrase: ${{ secrets.SSH_PASSPHRASE }}
           script: |
             set -e 
-            APP_DIR="/root/teche-ai-deployment"
-            REPO_URL="REPO_URL="https://github.com/eljanabdullazada/teche-ai-deployment.git"
+            APP_DIR="/path/to/teche-ai-deployment"
+            REPO_URL="https://github.com/eljanabdullazada/teche-ai-deployment.git"
             
             if [ ! -d "$APP_DIR/.git" ]; then
               git clone "$REPO_URL" "$APP_DIR"
@@ -27,7 +28,7 @@ jobs:
             git fetch origin main
             git reset --hard origin/main
             
-            if [! -f .env ]; then
+            if [ ! -f .env ]; then
               echo "ERROR: .env tapilmadi. Once serverde '$APP_DIR/.env' yaradin." >&2
               exit 1
             fi
