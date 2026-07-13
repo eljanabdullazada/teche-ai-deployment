@@ -17,7 +17,7 @@ jobs:
           passphrase: ${{ secrets.SSH_PASSPHRASE }}
           script: |
             set -e 
-            APP_DIR="/path/to/teche-ai-deployment"
+            APP_DIR="/root/teche-ai-deployment"
             REPO_URL="https://github.com/eljanabdullazada/teche-ai-deployment.git"
             
             if [ ! -d "$APP_DIR/.git" ]; then
