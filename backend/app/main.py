@@ -5,5 +5,5 @@ app = FastAPI(title="AI Starter Kit Backend")
 @app.get("/health")
 def health():
     return {
-        "mesaj": "Bu endpoint github actions ile avtomatik yenilenib"
+        "mesaj": "Bu endpoint github actions ile avtomatik yenilenib. Saat 19:22"
     }
